@@ -1,10 +1,17 @@
+from ParseData import ParseData
+from Classification import Classification
+
 from Variables import RUN_TYPE
-from Interfaces.IRun import RunTrain, RunPredict
 
 
 def run():
-    RunTrain() if RUN_TYPE == "train" else ...
-    RunPredict() if RUN_TYPE == "predict" else ...
+    classification: Classification = Classification()
+    if RUN_TYPE == "train":
+        ParseData(DATA_TYPE="LabeledData")
+        classification.train_model()
+    elif RUN_TYPE == "predict":
+        ParseData(DATA_TYPE="UnLabeledData")
+        classification.make_predictions()
 
 
 if __name__ == "__main__":
